@@ -1,4 +1,4 @@
-This directory contains the model architectures and experimental setups used for ChIRo, SchNet, DimeNet++, and SphereNet on the four tasks considered in the submission: 
+This directory contains the model architectures and experimental setups used for ChIRo, SchNet, DimeNet++, and SphereNet on the four tasks considered in the preprint: 
 
 **Learning 3D Representations of Molecular Chirality with Invariance to Bond Rotations**
 
@@ -58,7 +58,7 @@ To run each experiment, first create a conda environment with the following depe
 * sympy = 1.8
 * tqdm = 4.58.0
 
-Then, download the datasets from the above link and place them in a new directory ```final_data_splits/```
+Then, download the datasets (with exact training/validation/test splits) from https://figshare.com/s/e23be65a884ce7fc8543 and place them in a new directory ```final_data_splits/```
 
 You may then run each experiment by calling:
 
