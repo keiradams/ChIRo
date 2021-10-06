@@ -1,0 +1,100 @@
+{
+    "layers_dict":
+    {
+      "EConv_mlp_hidden_sizes":   [64], 
+      "GAT_hidden_node_sizes":    [32], 
+
+      "encoder_hidden_sizes_D":   [32, 32], 
+      "encoder_hidden_sizes_phi": [32, 32], 
+      "encoder_hidden_sizes_c": [32, 32],
+      "encoder_hidden_sizes_alpha": [32, 32],
+        
+      "encoder_hidden_sizes_sinusoidal_shift": [256, 256, 256], 
+      "output_mlp_hidden_sizes": [64, 64]
+    },
+
+
+    "activation_dict":  
+   {
+        "encoder_hidden_activation_D": "torch.nn.LeakyReLU(negative_slope=0.01)", 
+        "encoder_hidden_activation_phi": "torch.nn.LeakyReLU(negative_slope=0.01)", 
+        "encoder_hidden_activation_c": "torch.nn.LeakyReLU(negative_slope=0.01)", 
+        "encoder_hidden_activation_alpha": "torch.nn.LeakyReLU(negative_slope=0.01)",
+        "encoder_hidden_activation_sinusoidal_shift": "torch.nn.LeakyReLU(negative_slope=0.01)",
+        
+        "encoder_output_activation_D": "torch.nn.Identity()", 
+        "encoder_output_activation_phi": "torch.nn.Identity()", 
+        "encoder_output_activation_c": "torch.nn.Identity()",
+        "encoder_output_activation_alpha": "torch.nn.Identity()",
+        "encoder_output_activation_sinusoidal_shift": "torch.nn.Identity()",
+        
+        "EConv_mlp_hidden_activation": "torch.nn.LeakyReLU(negative_slope=0.01)",
+        "EConv_mlp_output_activation": "torch.nn.Identity()",
+        
+        "output_mlp_hidden_activation": "torch.nn.LeakyReLU(negative_slope=0.01)",
+        "output_mlp_output_activation": "torch.nn.Identity()"
+    },
+
+    "pretrained": "",
+    "random_seed": 1,
+
+    "F_z_list": [8, 8, 8],
+    "F_H": 32,
+    "F_H_EConv": 32,
+    "GAT_N_heads": 2,
+    "EConv_bias": true,
+    "GAT_bias": true,
+    "encoder_biases": true,
+    "dropout": 0.0,
+    
+    "chiral_message_passing": false,
+    "CMP_EConv_MLP_hidden_sizes": [256, 256, 256], 
+    "CMP_GAT_N_layers": 3,
+    "CMP_GAT_N_heads": 2,
+    
+    "c_coefficient_mode": "learned",
+    "c_coefficient_normalization": "sigmoid",
+    "phase_shift_coefficient_mode": "learned",
+    "auxillary_torsion_loss": 0.0018603774073415525,
+    
+    "encoder_reduction": "sum",
+    
+    "output_concatenation_mode": "both",
+
+    "default_lr": 0.00012821924940469874,
+
+    "num_workers": 8,
+    "batch_size": 16,
+    "N_epochs": 100,
+    
+    "CV_fold": 1,
+    "train_datafile": "final_data_splits/chloroform_CV_dataset_optical_rotation_5_rdkit_MOL_ee_95_MW_564_150380.pkl",
+    "validation_datafile": "final_data_splits/chloroform_CV_dataset_optical_rotation_5_rdkit_MOL_ee_95_MW_564_150380.pkl",
+    "test_datafile": "final_data_splits/chloroform_CV_dataset_optical_rotation_5_rdkit_MOL_ee_95_MW_564_150380.pkl",
+     
+    "iteration_mode": "stereoisomers",
+    "sample_1conformer": false,
+    "select_N_enantiomers": null,
+    
+    "mask_coordinates": false,
+    "stereoMask": true,
+    
+    "grouping": "none",
+    "weighted_sum": true,
+
+    "stratified": false,
+    "withoutReplacement": true,
+
+    "loss_function": "BCE",
+    "absolute_penalty": null,
+    "relative_penalty": null,
+    "ranking_margin": null,
+    
+    "contrastive_vector": "none",
+    "margin": null,
+    
+    "N_neg": 1,
+    "N_pos": 0,
+    
+    "save": true
+}
