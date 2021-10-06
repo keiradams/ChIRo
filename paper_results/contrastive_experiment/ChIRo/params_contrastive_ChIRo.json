@@ -1,0 +1,100 @@
+{
+    "layers_dict":
+    {
+      "EConv_mlp_hidden_sizes":   [32, 32], 
+      "GAT_hidden_node_sizes":    [64], 
+
+      "encoder_hidden_sizes_D":   [64, 64], 
+      "encoder_hidden_sizes_phi": [64, 64], 
+      "encoder_hidden_sizes_c": [64, 64],
+      "encoder_hidden_sizes_alpha": [64, 64],
+        
+      "encoder_hidden_sizes_sinusoidal_shift": [256, 256], 
+      "output_mlp_hidden_sizes": []
+    },
+
+
+    "activation_dict":  
+   {
+        "encoder_hidden_activation_D": "torch.nn.LeakyReLU(negative_slope=0.01)", 
+        "encoder_hidden_activation_phi": "torch.nn.LeakyReLU(negative_slope=0.01)", 
+        "encoder_hidden_activation_c": "torch.nn.LeakyReLU(negative_slope=0.01)", 
+        "encoder_hidden_activation_alpha": "torch.nn.LeakyReLU(negative_slope=0.01)",
+        "encoder_hidden_activation_sinusoidal_shift": "torch.nn.LeakyReLU(negative_slope=0.01)",
+        
+        "encoder_output_activation_D": "torch.nn.Identity()", 
+        "encoder_output_activation_phi": "torch.nn.Identity()", 
+        "encoder_output_activation_c": "torch.nn.Identity()",
+        "encoder_output_activation_alpha": "torch.nn.Identity()",
+        "encoder_output_activation_sinusoidal_shift": "torch.nn.Identity()",
+        
+        "EConv_mlp_hidden_activation": "torch.nn.LeakyReLU(negative_slope=0.01)",
+        "EConv_mlp_output_activation": "torch.nn.Identity()",
+        
+        "output_mlp_hidden_activation": "torch.nn.LeakyReLU(negative_slope=0.01)",
+        "output_mlp_output_activation": "torch.nn.Identity()"
+    },
+
+    "pretrained": "",
+    "random_seed": 1,
+    
+    "F_z_list": [2, 2, 2],
+    "F_H": 64,
+    "F_H_EConv": 64,
+    "GAT_N_heads": 4,
+    "EConv_bias": true,
+    "GAT_bias": true,
+    "encoder_biases": true,
+    "dropout": 0.0,
+    
+    "chiral_message_passing": true,
+    "CMP_EConv_MLP_hidden_sizes": [256, 256], 
+    "CMP_GAT_N_layers": 3,
+    "CMP_GAT_N_heads": 2,
+    
+    "c_coefficient_mode": "learned",
+    "c_coefficient_normalization": "sigmoid",
+    "phase_shift_coefficient_mode": "learned",
+    "auxillary_torsion_loss": 0.0008249542971659538,
+    
+    "encoder_reduction": "sum",
+    
+    "output_concatenation_mode": "contrastive",
+
+    "default_lr": 0.0006059244630573096,
+
+    "num_workers": 8,
+    "batch_size": 32,
+    "N_epochs": 50,
+    
+    "train_datafile": "final_data_splits/train_contrastive_MOL_2088008_418922_180426.pkl",
+    "validation_datafile": "final_data_splits/validation_contrastive_MOL_450726_89786_38658.pkl",
+    "test_datafile": "",
+     
+    "iteration_mode": "stereoisomers",
+    "sample_1conformer": false,
+    "select_N_enantiomers": null,
+    
+    "mask_coordinates": false,
+    "stereoMask": true,
+    
+    "grouping": "none",
+    "weighted_sum": true,
+
+    "stratified": false,
+    "withoutReplacement": true,
+    
+    "loss_function": "euclidean-normalized",
+    "absolute_penalty": null,
+    "relative_penalty": null,
+    "ranking_margin": null,
+    
+    "contrastive_vector": "z_alpha",
+    "margin": 1.0,
+    
+    "N_neg": 1,
+    "N_pos": 1,
+    
+    "save": true
+
+}
