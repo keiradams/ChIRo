@@ -1,0 +1,45 @@
+{
+    "pretrained": "",
+    "random_seed": 1,
+    
+    "hidden_channels": 128,
+    "num_filters": 128,
+    "num_interactions": 6,
+    "num_gaussians": 50,
+    "cutoff": 10.0,
+    "max_num_neighbors": 32,
+    "out_channels": 2,
+    "MLP_hidden_sizes": [],
+
+    "lr": 0.0001,
+
+    "num_workers": 8,
+    "batch_size": 32,
+    "N_epochs": 50,
+    
+    "train_datafile": "final_data_splits/train_contrastive_MOL_2088008_418922_180426.pkl",
+    "validation_datafile": "final_data_splits/validation_contrastive_MOL_450726_89786_38658.pkl",
+    "test_datafile": "",
+    
+    "iteration_mode": "stereoisomers",
+    "sample_1conformer": false,
+    "select_N_enantiomers": null,
+    
+    "grouping": "none",
+    "weighted_sum": false,
+
+    "stratified": false,
+    "withoutReplacement": true,
+
+    "loss_function": "euclidean-normalized",
+    "absolute_penalty": null,
+    "relative_penalty": null,
+    "ranking_margin": null,
+    
+    "margin": 1.0,
+    
+    "N_neg": 1,
+    "N_pos": 1,
+    
+    "save": true
+}

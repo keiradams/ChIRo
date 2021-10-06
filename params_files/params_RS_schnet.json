@@ -1,0 +1,45 @@
+{
+    "pretrained": "",
+    "random_seed": 1,
+    
+    "hidden_channels": 128,
+    "num_filters": 128,
+    "num_interactions": 6,
+    "num_gaussians": 50,
+    "cutoff": 10.0,
+    "max_num_neighbors": 32,
+    "out_channels": 32,
+    "MLP_hidden_sizes": [64, 64],
+
+    "lr": 0.0001,
+
+    "num_workers": 8,
+    "batch_size": 32,
+    "N_epochs": 100,
+    
+    "train_datafile": "final_data_splits/train_RS_classification_enantiomers_MOL_326865_55084_27542.pkl",
+    "validation_datafile": "final_data_splits/validation_RS_classification_enantiomers_MOL_70099_11748_5874.pkl",
+    "test_datafile": "final_data_splits/test_RS_classification_enantiomers_MOL_69719_11680_5840.pkl",
+    
+    "iteration_mode": "stereoisomers",
+    "sample_1conformer": false,
+    "select_N_enantiomers": null,
+    
+    "grouping": "none",
+    "weighted_sum": true,
+
+    "stratified": false,
+    "withoutReplacement": true,
+
+    "loss_function": "BCE",
+    "absolute_penalty": null,
+    "relative_penalty": null,
+    "ranking_margin": null,
+    
+    "margin": null,
+    
+    "N_neg": 1,
+    "N_pos": 0,
+    
+    "save": true
+}
