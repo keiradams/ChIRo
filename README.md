@@ -1,4 +1,4 @@
-![InterRoto Invariance with Chiral Perception](https://github.com/keiradams/ChIRo/tree/main/figures/InterRotoInvariance.png)
+![ScreenShot](/figures/InterRotoInvariance.png)
 
 This directory contains the model architectures and experimental setups used for ChIRo, SchNet, DimeNet++, and SphereNet on the four tasks considered in the preprint: 
 
