@@ -41,6 +41,13 @@ This directory is organized as follows:
 
 * Subdirectory ```training_scripts/``` contains the python scripts to run each of the four experiments, for each of the four 3D models ChIRo, SchNet, DimeNet++, and SphereNet. Before running each experiment, move the corresponding training script to the parent directory.
 
+* Subdirectory ```hyperopt/``` contains hyperparameter optimization scripts for ChIRo using Raytune.
+
+
+* Subdirectory ```experiment_analysis/``` contains jupyter notebooks for analyzing results of each experiment.
+
+* Subdirectory ```paper_results/``` contains the parameter files, model parameter dictionaries, and loss curves for each experiment reported in the paper.
+
 -----------------------------------------------------------------------------------------------------------------------------
 
 To run each experiment, first create a conda environment with the following dependencies:
@@ -58,6 +65,7 @@ To run each experiment, first create a conda environment with the following depe
 * pandas = 1.1.3
 * rdkit = 2020.09.4
 * scikit-learn = 0.23.2
+* matplotlib = 3.3.3
 * scipy = 1.5.2
 * sympy = 1.8
 * tqdm = 4.58.0
