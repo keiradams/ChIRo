@@ -168,17 +168,28 @@ class Sample_Map_To_Positives:
     def __init__(self, dataframe, isSorted=True, include_anchor = False): #isSorted vastly speeds up processing, but requires that the dataframe is sorted by SMILES_nostereo
         self.mapping = {}
         self.include_anchor = include_anchor
-        
-        for row_index, row in dataframe.iterrows():
-            if isSorted:
-                subset_df = dataframe.iloc[max(row_index-50, 0): row_index+50, :]
+
+        # for row_index, row in dataframe.iterrows():
+        #     if isSorted:
+        #         subset_df = dataframe.iloc[max(row_index-50, 0): row_index+50, :]
                 
-                if self.include_anchor == False:
-                    positives = set(subset_df[(subset_df.ID == row.ID) & (subset_df.index.values != row_index)].index)
-                else:
-                    positives = set(subset_df[(subset_df.ID == row.ID)].index)
+        #         if self.include_anchor == False:
+        #             positives = set(subset_df[(subset_df.ID == row.ID) & (subset_df.index.values != row_index)].index)
+        #         else:
+        #             positives = set(subset_df[(subset_df.ID == row.ID)].index)
                 
-                self.mapping[row_index] = positives
+        #         self.mapping[row_index] = positives
+
+        #     import ipdb;ipdb.set_trace()
+
+        group_indices = dataframe.groupby("ID").indices
+
+        mapping = {}
+        for smiles, indices in group_indices.items():
+            new_mapping = {}
+            for i in indices:
+                new_mapping[i] = set(indices)
+            self.mapping.update(new_mapping)
                 
     def sample(self, i, N=1, withoutReplacement=True): #sample positives
         if withoutReplacement:
@@ -191,13 +202,28 @@ class Sample_Map_To_Positives:
 class Sample_Map_To_Negatives:
     def __init__(self, dataframe, isSorted=True): #isSorted vastly speeds up processing, but requires that the dataframe is sorted by SMILES_nostereo
         self.mapping = {}
-        for row_index, row in dataframe.iterrows():
-            if isSorted:
-                negative_classes = []
-                subset_df = dataframe.iloc[max(row_index-200, 0) : row_index+200, :]
-                grouped_negatives = subset_df[(subset_df.SMILES_nostereo == row.SMILES_nostereo) & (subset_df.ID != row.ID)].groupby(by='ID', sort = False).groups.values()
-                negative_classes = [set(list(group)) for group in grouped_negatives]
-                self.mapping[row_index] = negative_classes
+        # for row_index, row in dataframe.iterrows():
+        #     if isSorted:
+        #         negative_classes = []
+        #         subset_df = dataframe.iloc[max(row_index-200, 0) : row_index+200, :]
+        #         grouped_negatives = subset_df[(subset_df.SMILES_nostereo == row.SMILES_nostereo) & (subset_df.ID != row.ID)].groupby(by='ID', sort = False).groups.values()
+        #         negative_classes = [set(list(group)) for group in grouped_negatives]
+        #         self.mapping[row_index] = negative_classes
+        group_indices = dataframe.groupby("ID").indices
+        for smiles, indices in group_indices.items():
+            new_mapping = {}
+
+            # get negative smiles 
+            if "C@@" in smiles:
+                negative_smiles = smiles.replace("C@@", 'C@')
+            elif "C@" in smiles: 
+                negative_smiles = smiles.replace("C@", 'C@@')
+
+            for i in group_indices[smiles]:
+                new_mapping[i] = [set(group_indices[negative_smiles])]
+                
+                self.mapping.update(new_mapping)
+
         
     def sample(self, i, N=1, withoutReplacement=True, stratified=True): #sample negatives
         if withoutReplacement:
