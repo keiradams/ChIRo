@@ -18,7 +18,7 @@ from tqdm import tqdm
 import datetime
 import random
 
-from .embedding_functions import embedConformerWithAllPaths, get_xyz
+from .embedding_functions import embedConformerWithAllPaths
 
 class StereoBatchSampler(torch.utils.data.sampler.Sampler):
     """
